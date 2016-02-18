@@ -14,7 +14,8 @@ namespace WindowsFormsApplication3
     {
         // 计数器
         int counter = 0;
-        bool b = false;
+        bool b = true;
+        object o = new object();
         public Form1()
         {
             InitializeComponent();
@@ -71,11 +72,12 @@ namespace WindowsFormsApplication3
             if (0 == counter)
             {
                 // 加载完毕
-                string content=this.textBox2.Text;
+                string content = this.textBox2.Text;
                 string js = "document.getElementById('tgb').contentWindow.document.getElementById('veditor1_Iframe').contentWindow.document.getElementsByTagName('div')[0].innerHTML='" + content + "';";
                 string action = "document.getElementById('tgb').contentWindow.document.getElementById('btnPostMsg').click();";
                 string refresh = "window.location=window.location;";
                 webBrowser1.Document.InvokeScript("eval", new object[] { js + action + refresh });
+                b = false;
 
             }
 
@@ -83,15 +85,21 @@ namespace WindowsFormsApplication3
         }
 
 
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-
-            if (DateTime.Now.ToString("HH:mm:ss") == this.comboBox1.Text + ":" + "00")
+            if (b == true)
             {
-
-                btnStart_Click(null, null);
-
+                if (DateTime.Now.ToString("HH:mm") == this.comboBox1.Text)
+                {
+                    btnStart_Click(null, null);
+                }
+            }
+            else
+            {
+                if (DateTime.Now.ToString("HH:mm") != this.comboBox1.Text)
+                {
+                    b = true;
+                }
             }
         }
 
@@ -107,7 +115,10 @@ namespace WindowsFormsApplication3
             this.timer1.Enabled = true;
             this.button1.Text = "已启动";
             this.button1.Enabled = false;
+
         }
+
+      
 
     }
 }

@@ -72,7 +72,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 800;
+            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // textBox1
@@ -109,6 +109,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 6;
+            
             // 
             // label3
             // 
