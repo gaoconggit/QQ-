@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mshtml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using WebBrowserTest;
 
 namespace WindowsFormsApplication3
 {
@@ -16,6 +18,8 @@ namespace WindowsFormsApplication3
         int counter = 0;
         bool b = true;
         object o = new object();
+        //首次登录
+        bool flag = true;
         public Form1()
         {
             InitializeComponent();
@@ -32,8 +36,18 @@ namespace WindowsFormsApplication3
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             counter--;
-
-
+            if (counter == 0)
+            {
+                if (flag == true)
+                {
+                    var doc = this.webBrowser1.Document;
+                    var frames = doc.Window.Frames;
+                    IHTMLDocument3 baiduDoc = CorssDomainHelper.GetDocumentFromWindow(frames[0].DomWindow as IHTMLWindow2);
+                    IHTMLElement item = baiduDoc.documentElement.all[37];
+                    item.click();
+                    flag = false;
+                }
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -71,6 +85,7 @@ namespace WindowsFormsApplication3
 
             if (0 == counter)
             {
+
                 // 加载完毕
                 string content = this.textBox2.Text;
                 string js = "document.getElementById('tgb').contentWindow.document.getElementById('veditor1_Iframe').contentWindow.document.getElementsByTagName('div')[0].innerHTML='" + content + "';";
@@ -80,6 +95,9 @@ namespace WindowsFormsApplication3
                 b = false;
 
             }
+
+
+
 
 
         }
@@ -112,13 +130,13 @@ namespace WindowsFormsApplication3
             }
             webBrowser1.Navigate("http://user.qzone.qq.com/" + this.textBox1.Text + "/334");
             webBrowser1.ScriptErrorsSuppressed = true;
-            this.timer1.Enabled = true;
+            this.timer1.Enabled = false;
             this.button1.Text = "已启动";
             this.button1.Enabled = false;
 
         }
 
-      
+
 
     }
 }
