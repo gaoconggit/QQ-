@@ -43,8 +43,14 @@ namespace WindowsFormsApplication3
                     var doc = this.webBrowser1.Document;
                     var frames = doc.Window.Frames;
                     IHTMLDocument3 baiduDoc = CorssDomainHelper.GetDocumentFromWindow(frames[0].DomWindow as IHTMLWindow2);
-                    IHTMLElement item = baiduDoc.documentElement.all[37];
-                    item.click();
+                    foreach (IHTMLElement item in baiduDoc.documentElement.all)
+                    {
+                        if (item.className == "face")
+                        {
+                            item.click();
+                            break;
+                        }
+                    }
                     flag = false;
                 }
             }
@@ -130,7 +136,7 @@ namespace WindowsFormsApplication3
             }
             webBrowser1.Navigate("http://user.qzone.qq.com/" + this.textBox1.Text + "/334");
             webBrowser1.ScriptErrorsSuppressed = true;
-            this.timer1.Enabled = false;
+            this.timer1.Enabled = true;
             this.button1.Text = "已启动";
             this.button1.Enabled = false;
 
