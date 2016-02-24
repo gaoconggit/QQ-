@@ -94,10 +94,17 @@ namespace WindowsFormsApplication3
 
                 // 加载完毕
                 string content = this.textBox2.Text;
-                string js = "document.getElementById('tgb').contentWindow.document.getElementById('veditor1_Iframe').contentWindow.document.getElementsByTagName('div')[0].innerHTML='" + content + "';";
-                string action = "document.getElementById('tgb').contentWindow.document.getElementById('btnPostMsg').click();";
-                string refresh = "window.location=window.location;";
-                webBrowser1.Document.InvokeScript("eval", new object[] { js + action + refresh });
+                //string js = "document.getElementById('tgb').contentWindow.document.getElementById('veditor1_Iframe').contentWindow.document.getElementsByTagName('div')[0].innerHTML='" + content + "';";
+                //string action = "document.getElementById('tgb').contentWindow.document.getElementById('btnPostMsg').click();";
+                //string refresh = "window.location=window.location;";
+                //webBrowser1.Document.InvokeScript("eval", new object[] { js + action + refresh });
+                var doc = this.webBrowser1.Document;
+                HtmlWindowCollection frames = doc.Window.Frames;
+                IHTMLDocument3 baiduDoc = CorssDomainHelper.GetDocumentFromWindow(frames[0].Frames[0].DomWindow as IHTMLWindow2);
+                IHTMLElement item = baiduDoc.getElementsByTagName("div").item(0) as IHTMLElement;
+                item.innerHTML = content;
+                IHTMLDocument3 baiduDoc1 = CorssDomainHelper.GetDocumentFromWindow(frames[0].DomWindow as IHTMLWindow2);
+                baiduDoc1.getElementById("btnPostMsg").click();
                 b = false;
 
             }
