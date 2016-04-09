@@ -29,3 +29,11 @@ C:\Users\Administrator\Desktop\新建文件夹\trunk\WindowsFormsApplication3\Wi
 C:\Users\Administrator\Desktop\新建文件夹\trunk\WindowsFormsApplication3\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Form1.resources
 C:\Users\Administrator\Desktop\新建文件夹\trunk\WindowsFormsApplication3\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Properties.Resources.resources
 C:\Users\Administrator\Desktop\新建文件夹\trunk\WindowsFormsApplication3\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\新建文件夹 (8)\trunk\WindowsFormsApplication3\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe
+C:\Users\Administrator\Desktop\新建文件夹 (8)\trunk\WindowsFormsApplication3\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.pdb
+C:\Users\Administrator\Desktop\新建文件夹 (8)\trunk\WindowsFormsApplication3\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csproj.ResolveComReference.cache
+C:\Users\Administrator\Desktop\新建文件夹 (8)\trunk\WindowsFormsApplication3\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Form1.resources
+C:\Users\Administrator\Desktop\新建文件夹 (8)\trunk\WindowsFormsApplication3\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Properties.Resources.resources
+C:\Users\Administrator\Desktop\新建文件夹 (8)\trunk\WindowsFormsApplication3\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\新建文件夹 (8)\trunk\WindowsFormsApplication3\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.exe
+C:\Users\Administrator\Desktop\新建文件夹 (8)\trunk\WindowsFormsApplication3\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.pdb

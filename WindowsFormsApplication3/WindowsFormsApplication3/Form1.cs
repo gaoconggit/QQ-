@@ -53,7 +53,9 @@ namespace WindowsFormsApplication3
                     }
                     flag = false;
                 }
+
             }
+            
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -63,25 +65,30 @@ namespace WindowsFormsApplication3
 
             for (int i = 0; i <= 23; i++)
             {
-                for (int j = 0; j <= 59; j++)
+                string H = i + "";
+                if (i < 10)
                 {
-                    string H = i + "";
-                    string M = j + "";
-                    string time = "";
-                    if (i < 10)
-                    {
-                        H = "0" + H;
-                    }
-                    if (j < 10)
-                    {
-                        M = "0" + M;
-
-                    }
-                    time = H + ":" + M;
-                    this.comboBox1.Items.Add(time);
+                    H = "0" + H;
                 }
+                this.comboBox1.Items.Add(H);
+            }
+            for (int j = 0; j <= 59; j++)
+            {
+
+                string M = j + "";
+
+
+                if (j < 10)
+                {
+                    M = "0" + M;
+
+                }
+
+
+                this.comboBox2.Items.Add(M);
             }
             this.comboBox1.Text = this.comboBox1.Items[0].ToString();
+            this.comboBox2.Text = this.comboBox2.Items[0].ToString();
 
 
         }
@@ -120,16 +127,9 @@ namespace WindowsFormsApplication3
         {
             if (b == true)
             {
-                if (DateTime.Now.ToString("HH:mm") == this.comboBox1.Text)
+                if (DateTime.Now.ToString("HH:mm") == this.comboBox1.Text + ":" + this.comboBox2.Text)
                 {
                     btnStart_Click(null, null);
-                }
-            }
-            else
-            {
-                if (DateTime.Now.ToString("HH:mm") != this.comboBox1.Text)
-                {
-                    b = true;
                 }
             }
         }
@@ -141,15 +141,36 @@ namespace WindowsFormsApplication3
                 MessageBox.Show("QQ号必填");
                 return;
             }
+
             webBrowser1.Navigate("http://user.qzone.qq.com/" + this.textBox1.Text + "/334");
             webBrowser1.ScriptErrorsSuppressed = true;
+
             this.timer1.Enabled = true;
             this.button1.Text = "已启动";
             this.button1.Enabled = false;
 
+            //this.button1.Enabled = true;
+            //this.button1.Text = "已停止";
+            //this.timer1.Enabled = false;
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            b = true;
+        }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            b = true;
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.timer1.Enabled = false;
+            MessageBox.Show("当前留言任务已经停止");
+            this.button1.Enabled = true;
+            this.button1.Text = "启动";
+            webBrowser1.Navigate("");
+        }
     }
 }
