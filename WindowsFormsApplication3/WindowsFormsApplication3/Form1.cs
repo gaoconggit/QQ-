@@ -132,6 +132,14 @@ namespace WindowsFormsApplication3
                     btnStart_Click(null, null);
                 }
             }
+            else
+            {
+                if (DateTime.Now.ToString("HH:mm") != this.comboBox1.Text + ":" + this.comboBox2.Text)
+                {
+                    b = true;
+                }
+
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
